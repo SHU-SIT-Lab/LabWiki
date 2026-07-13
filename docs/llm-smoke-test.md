@@ -137,6 +137,8 @@ trap 'kill "$heartbeat_pid" 2>/dev/null || true' EXIT
 
 # Run the commands below inside the GPU container. The first run may take
 # several minutes while Pyxis imports the image. Pyxis cannot create directories so ensure all directories exist before running the job.
+mkdir -p "$HOME/.cache/huggingface"
+
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting the container."
 srun --container-image=docker://nvcr.io/nvidia/pytorch:25.06-py3 \
      --container-mounts="$SLURM_SUBMIT_DIR:/workspace,$HOME/.cache/huggingface:/hf-cache" \
