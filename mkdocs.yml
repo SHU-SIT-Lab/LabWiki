@@ -1,0 +1,42 @@
+site_name: LabWiki
+site_description: Documentation for the SHU SIT Lab DGX Spark / Slurm cluster
+site_url: https://SHU-SIT-Lab.github.io/LabWiki/
+repo_url: https://github.com/SHU-SIT-Lab/LabWiki
+repo_name: SHU-SIT-Lab/LabWiki
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - LLM Smoke Test: llm-smoke-test.md
+  - Submitting Slurm Jobs: slurm-jobs.md
+  - Containers (Enroot & Pyxis): containers.md
+  - FAQ & Troubleshooting: faq.md
+  - Contributing to These Docs: contributing.md
