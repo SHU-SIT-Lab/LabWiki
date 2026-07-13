@@ -23,10 +23,27 @@ Use a batch job for long-running work. Write a script and submit it:
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err
 
-echo "Running on $(hostname)"
+log() {
+  printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*"
+}
+
+log "Running on $(hostname)"
 nvidia-smi
 
-python train.py --epochs 10
+heartbeat() {
+  while sleep 60; do
+    log "Training is still running."
+  done
+}
+
+heartbeat &
+heartbeat_pid=$!
+cleanup() { kill "$heartbeat_pid" 2>/dev/null || true; }
+trap cleanup EXIT
+
+log "Starting training"
+python -u train.py --epochs 10
+log "Training completed"
 ```
 
 Submit it:
@@ -40,6 +57,18 @@ For an actual implemented example that you can follow file by file, see the
 [LLM smoke test](llm-smoke-test.md). It includes the Python test program,
 dependency list, and complete Slurm submission script, and checks that a small
 LLM returns the expected answers.
+
+## Watch a running job's log
+
+Jobs can spend several minutes waiting for a container image or model to
+download on their first run. Add timestamped progress messages to your script
+and watch the output live:
+
+```bash
+tail -f logs/<job-name>-<job-id>.out
+```
+
+Press `Ctrl+C` to stop watching the log; this does **not** cancel the job.
 
 ## Useful commands
 

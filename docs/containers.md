@@ -14,12 +14,13 @@ flag.
 
 ## Running a container interactively
 
-Pull straight from a registry (Docker Hub, NGC, GHCR, etc.) using the
-`#registry#image:tag` syntax:
+Use a pinned Docker Hub image by default. Docker Hub images use the
+`repository/image:tag` form; for another registry, use
+`registry#image:tag` instead.
 
 ```bash
 srun --gres=gpu:1 \
-     --container-image=nvcr.io#nvidia/pytorch:24.05-py3 \
+     --container-image=pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime \
      --pty bash
 ```
 
@@ -37,8 +38,8 @@ so it may take a minute; subsequent runs reuse the cached image.
 #SBATCH --time=04:00:00
 #SBATCH --output=logs/%x-%j.out
 
-srun --container-image=nvcr.io#nvidia/pytorch:24.05-py3 \
-     --container-mounts=/home/data/scratch/$USER/project:/workspace \
+srun --container-image=pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime \
+     --container-mounts=$HOME/project:/workspace \
      bash -c "cd /workspace && python train.py"
 ```
 
@@ -46,7 +47,7 @@ srun --container-image=nvcr.io#nvidia/pytorch:24.05-py3 \
 
 | Flag | Meaning |
 |---|---|
-| `--container-image=` | Image to pull/run, e.g. `nvcr.io#nvidia/pytorch:24.05-py3` or a `docker://` reference |
+| `--container-image=` | Image to pull/run, e.g. `pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime` from Docker Hub |
 | `--container-mounts=` | Bind-mount host paths into the container, `host:container` |
 | `--container-workdir=` | Working directory inside the container |
 | `--container-name=` | Name the container instance so it can be reused across steps |
@@ -62,16 +63,17 @@ registry credentials/login steps required for private images.*
 
 ## Enroot image cache
 
-Store container images and related cache files under `/home/data/containers`.
-Keep datasets in `/home/data/datasets`, working files and outputs in
-`/home/data/scratch`, and material intended for group use in
-`/home/data/shared`.
+The Enroot image cache is managed by the system. Do not write directly to
+`/home/data/containers`. Keep your code, outputs, and personal caches in your
+home directory. Ask Josh to provision storage under `/home/data` when a
+project needs a shared dataset or workspace.
 
 ## Tips
 
 - Keep training code and data **outside** the container (via
   `--container-mounts`) so the image itself stays small and reusable.
-- Prefer official NVIDIA NGC images (`nvcr.io/nvidia/...`) for CUDA/PyTorch/
-  TensorFlow — they're built and tested for NVIDIA GPUs.
+- Prefer maintained Docker Hub images and pin a specific tag so your
+  environment is reproducible. The PyTorch image used in these examples is
+  `pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime`.
 - If a container fails to start, check `sinfo`/node health first — Pyxis
   errors sometimes mask an underlying node problem.

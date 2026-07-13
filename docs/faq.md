@@ -23,7 +23,7 @@ resources. Check available GPU counts with `sinfo -o "%G"`.
 
 ## Enroot image pull is slow or fails
 
-*Fill in: known registry rate limits, whether NGC/Docker Hub credentials are
+*Fill in: known Docker Hub registry rate limits, whether credentials are
 needed, and where to report persistent pull failures.*
 
 ## Where do my job's logs go?

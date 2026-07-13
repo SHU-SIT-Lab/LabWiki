@@ -1,26 +1,70 @@
-# Lab Cluster Docs
+<div class="landing-hero">
+  <div class="landing-hero__content">
+    <p class="eyebrow">SHU SIT LAB &middot; RESEARCH COMPUTING</p>
+    <h1>Move from idea to GPU job.</h1>
+    <p class="landing-lede">A practical guide to using the lab's DGX Spark system: schedule GPU work with Slurm and run reproducible environments with Enroot and Pyxis.</p>
+    <p class="hero-actions">
+      <a class="md-button md-button--primary" href="getting-started/">Run your first job</a>
+      <a class="md-button" href="llm-smoke-test/">Try the LLM example</a>
+    </p>
+  </div>
+  <dl class="hero-facts">
+    <div>
+      <dt>Compute</dt>
+      <dd>DGX Spark</dd>
+    </div>
+    <div>
+      <dt>Scheduling</dt>
+      <dd>Slurm</dd>
+    </div>
+    <div>
+      <dt>Environments</dt>
+      <dd>Enroot + Pyxis</dd>
+    </div>
+  </dl>
+</div>
 
-Welcome! This site explains how to use the lab's NVIDIA **DGX Spark** compute
-system, managed with **Slurm**. GPU containers run through **Enroot** and
-**Pyxis**.
+## Choose your next step
 
-If you're new here, start with [Getting Started](getting-started.md).
+<div class="journey-grid">
+  <a class="journey-card" href="getting-started/">
+    <span class="journey-card__number">01</span>
+    <span class="journey-card__title">Get connected</span>
+    <span class="journey-card__body">Set up NVIDIA Sync, check the system, and submit your first GPU job.</span>
+    <span class="journey-card__link">Start here &rarr;</span>
+  </a>
+  <a class="journey-card" href="llm-smoke-test/">
+    <span class="journey-card__number">02</span>
+    <span class="journey-card__title">Follow a complete example</span>
+    <span class="journey-card__body">Load a small LLM and run tests that verify its expected answers.</span>
+    <span class="journey-card__link">Run the LLM test &rarr;</span>
+  </a>
+  <a class="journey-card" href="containers/">
+    <span class="journey-card__number">03</span>
+    <span class="journey-card__title">Run your own work</span>
+    <span class="journey-card__body">Use a containerised environment for reproducible Python, CUDA, and ML workloads.</span>
+    <span class="journey-card__link">Work with containers &rarr;</span>
+  </a>
+</div>
 
-## What's on this cluster
+<div class="storage-callout">
+  <div>
+    <p class="eyebrow">KEEP PROJECTS ORGANISED</p>
+    <h2>Start personal work in your home directory.</h2>
+  </div>
+  <p>Use <code>$HOME</code> for code, logs, and personal caches. The areas under <code>/home/data</code> are managed shared storage: request a project directory or dataset access when you need it.</p>
+</div>
 
-- **Hardware:** NVIDIA DGX Spark node(s) — *fill in count, GPUs per node, memory, storage, and network details*
-- **Scheduler:** [Slurm](https://slurm.schedmd.com/) — allocates compute resources and runs jobs
-- **Containers:** [Enroot](https://github.com/NVIDIA/enroot) (an unprivileged container runtime) and [Pyxis](https://github.com/NVIDIA/pyxis) (the Slurm plugin for launching Enroot containers from `srun` and `sbatch`)
+## What is on the system?
 
-## Quick links
+| Component | What it is for |
+|---|---|
+| **DGX Spark** | NVIDIA GPU compute for research workloads |
+| **Slurm** | Requests resources and runs interactive or batch jobs |
+| **Enroot + Pyxis** | Runs containers directly through Slurm without `sudo` |
 
-- [Getting Started](getting-started.md) — accounts, NVIDIA Sync access, and your first training job
-- [LLM Smoke Test](llm-smoke-test.md) — run a small LLM and verify expected answers
-- [Submitting Slurm Jobs](slurm-jobs.md) — `sbatch` and `srun`
-- [Containers (Enroot & Pyxis)](containers.md) — running GPU containers on the cluster
-- [FAQ & Troubleshooting](faq.md)
+## Need help?
 
-## Getting help
-
-Contact **Josh Bamforth** at [josh.bamforth@shu.ac.uk](mailto:josh.bamforth@shu.ac.uk)
-— he administers the cluster and creates new accounts.
+If a job fails or you need an account, contact **Josh Bamforth** at
+[josh.bamforth@shu.ac.uk](mailto:josh.bamforth@shu.ac.uk). The
+[FAQ & Troubleshooting](faq.md) page covers common job and container issues.

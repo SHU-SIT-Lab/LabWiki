@@ -11,14 +11,17 @@ single-GPU test rather than serious evaluation or training.
 
 !!! note
     The compute node needs access to Hugging Face the first time this is run.
-    The model is then retained in the cache mounted from `/home/data/containers`.
+    The model is then retained in your personal cache under your home
+    directory.
 
 ## 1. Create a project directory
 
+Work in your home directory. Every account can write here.
+
 ```bash
-mkdir -p /home/data/scratch/$USER/llm-smoke-test/logs
-mkdir -p /home/data/containers/huggingface/$USER
-cd /home/data/scratch/$USER/llm-smoke-test
+mkdir -p "$HOME/llm-smoke-test/logs"
+mkdir -p "$HOME/.cache/huggingface"
+cd "$HOME/llm-smoke-test"
 ```
 
 ## 2. Add the Python dependencies
@@ -35,6 +38,7 @@ safetensors==0.5.2
 Create `test_llm.py`:
 
 ```python title="test_llm.py"
+import sys
 import unittest
 
 import torch
@@ -47,14 +51,19 @@ MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"
 class LLMAnswerTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        print("Loading tokenizer...", flush=True)
         cls.tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+
+        print("Tokenizer loaded. Loading model; the first run may download it...", flush=True)
         cls.model = AutoModelForCausalLM.from_pretrained(
             MODEL_ID, torch_dtype=torch.bfloat16
         ).to("cuda")
         cls.model.eval()
+        print(f"Model ready on {torch.cuda.get_device_name(0)}.", flush=True)
 
     @classmethod
     def answer(cls, question):
+        print(f"Asking: {question}", flush=True)
         messages = [
             {
                 "role": "system",
@@ -75,7 +84,9 @@ class LLMAnswerTests(unittest.TestCase):
             )
 
         answer_tokens = output[0][inputs.shape[-1] :]
-        return cls.tokenizer.decode(answer_tokens, skip_special_tokens=True).strip()
+        answer = cls.tokenizer.decode(answer_tokens, skip_special_tokens=True).strip()
+        print(f"Received: {answer}", flush=True)
+        return answer
 
     def test_basic_arithmetic(self):
         self.assertEqual(self.answer("What is 2 + 2?"), "4")
@@ -87,7 +98,8 @@ class LLMAnswerTests(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    runner = unittest.TextTestRunner(stream=sys.stdout, verbosity=2)
+    unittest.main(testRunner=runner)
 ```
 
 `do_sample=False` makes generation deterministic for a fixed model, prompt,
@@ -98,21 +110,55 @@ for research evaluation, use a task-specific dataset and scoring method.
 
 Create `llm-smoke-test.sbatch`:
 
+The script has three parts: the `#SBATCH` lines request resources, the small
+background loop writes a status update every 30 seconds, and `srun` starts the
+container and runs the test. All messages go to one `.out` file, including
+normal Pyxis container-import messages.
+
 ```bash title="llm-smoke-test.sbatch"
 #!/bin/bash
+# Ask Slurm for the resources this small test needs.
 #SBATCH --job-name=llm-smoke-test
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH --time=00:20:00
+#SBATCH --time=00:30:00
 #SBATCH --output=logs/%x-%j.out
-#SBATCH --error=logs/%x-%j.err
 
-srun --container-image=nvcr.io#nvidia/pytorch:24.05-py3 \
-     --container-mounts=/home/data/scratch/$USER/llm-smoke-test:/workspace,/home/data/containers/huggingface/$USER:/hf-cache \
+set -euo pipefail
+
+# Write a reassuring update while the first container or model download runs.
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Job started on $(hostname)."
+while sleep 30; do
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Still running - preparing the container, installing packages, downloading the model, or testing."
+done &
+heartbeat_pid=$!
+trap 'kill "$heartbeat_pid" 2>/dev/null || true' EXIT
+
+# Run the commands below inside the GPU container. The first run may take
+# several minutes while Pyxis imports the image. Pyxis cannot create directories so ensure all directories exist before running the job.
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting the container."
+srun --container-image=docker://nvcr.io/nvidia/pytorch:25.06-py3 \
+     --container-mounts="$SLURM_SUBMIT_DIR:/workspace,$HOME/.cache/huggingface:/hf-cache" \
      --container-workdir=/workspace \
-     bash -lc 'python -m pip install --disable-pip-version-check --target /workspace/.packages -r requirements.txt && PYTHONPATH=/workspace/.packages HF_HOME=/hf-cache python test_llm.py'
+     bash -lc '
+       set -euo pipefail
+       echo "Installing Python dependencies."
+       python -m pip install --disable-pip-version-check --target /workspace/.packages -r requirements.txt
+       echo "Dependencies are ready. Loading and testing the model."
+       PYTHONPATH=/workspace/.packages HF_HOME=/hf-cache python -u test_llm.py
+     '
+
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] All LLM smoke tests completed successfully."
 ```
+
+!!! tip
+    `bash -lc '...'` in the `srun` command simply means “run these commands
+    inside the container.” It first installs the two Python packages, then
+    runs `test_llm.py`.
+
+The job writes a timestamped progress update every 30 seconds, including while
+the container is being prepared or the model is downloading.
 
 Submit it:
 
@@ -120,21 +166,22 @@ Submit it:
 sbatch llm-smoke-test.sbatch
 ```
 
-## 5. Read the result
+## 5. Watch the job and read the result
 
-Check the job is running or waiting:
+Check whether the job is waiting or running:
 
 ```bash
 squeue -u $USER
 ```
 
-Once it has finished, inspect the output. Replace `<job-id>` with the ID
-printed by `sbatch`:
+Once `sbatch` prints a job ID, watch its output live. Replace `<job-id>` with
+that ID:
 
 ```bash
-cat logs/llm-smoke-test-<job-id>.out
+tail -f logs/llm-smoke-test-<job-id>.out
 ```
 
+Press `Ctrl+C` to stop watching the log; this does **not** cancel the job.
 On success, the end of the log includes:
 
 ```text
@@ -142,8 +189,9 @@ test_basic_arithmetic ... ok
 test_capital_city ... ok
 
 OK
+[YYYY-MM-DD HH:MM:SS] All LLM smoke tests completed successfully.
 ```
 
 The first run takes longer because it downloads the container dependencies and
 the model. Later runs reuse the model cache and the Python packages stored in
-the project directory.
+your home directory.

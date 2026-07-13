@@ -37,12 +37,12 @@ This shows currently running and queued jobs — yours and everyone else's.
 ## 4. Your first training job
 
 This example runs a short PyTorch training loop in an NVIDIA container and
-writes its output to your scratch area. Copy the commands into the shell
-opened by NVIDIA Sync.
+writes its output to your home directory. Every account can write here. Copy
+the commands into the shell opened by NVIDIA Sync.
 
 ```bash
-mkdir -p /home/data/scratch/$USER/first-training-job/logs
-cd /home/data/scratch/$USER/first-training-job
+mkdir -p "$HOME/first-training-job/logs"
+cd "$HOME/first-training-job"
 ```
 
 Create a file called `first-training.sbatch` containing:
@@ -57,8 +57,8 @@ Create a file called `first-training.sbatch` containing:
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err
 
-srun --container-image=nvcr.io#nvidia/pytorch:24.05-py3 \
-     --container-mounts=/home/data/scratch/$USER/first-training-job:/workspace \
+srun --container-image=pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime \
+     --container-mounts=$HOME/first-training-job:/workspace \
      --container-workdir=/workspace \
      python -c "import torch; assert torch.cuda.is_available(); x = torch.rand(4096, 4096, device='cuda'); print('Training test completed on:', torch.cuda.get_device_name(0)); print('Result:', (x @ x).mean().item())"
 ```
@@ -81,21 +81,24 @@ If it reports `Training test completed on`, you have successfully run a GPU
 job. Keep your code and outputs in this project directory, then adapt the
 container command to run your own training script.
 
-## 5. Shared storage
+## 5. Storage
 
-Use `/home/data` for project material that must be available to jobs. Its
-main areas are:
+Use your home directory (`$HOME`) for code, working files, logs, and personal
+caches. It is available to every account and is the right place to start.
+
+`/home/data` is managed shared storage. Its main areas are:
 
 | Location | Intended use |
 |---|---|
-| `/home/data/containers` | Container images and related cache files |
-| `/home/data/datasets` | Datasets |
-| `/home/data/scratch` | Working files, job outputs, and temporary experiment data |
-| `/home/data/shared` | Files shared with other lab users |
+| `/home/data/containers` | Lab-managed container images and caches |
+| `/home/data/datasets` | Lab-managed datasets |
+| `/home/data/scratch` | Temporary working storage for provisioned projects |
+| `/home/data/shared` | Files shared through provisioned project directories |
 
-Use a directory named after your username or project within these locations
-where appropriate. Do not rely on the Spark as the only copy of important
-results: copy finished work to University OneDrive or your own machine.
+Do not create directories directly under `/home/data`. Ask Josh if you need a
+project directory there or access to a shared dataset. Do not rely on the
+Spark as the only copy of important results: copy finished work to University
+OneDrive or your own machine.
 
 Next, see:
 
