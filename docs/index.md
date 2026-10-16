@@ -24,6 +24,12 @@
   </dl>
 </div>
 
+!!! important "GPU workflow updated — 16 October 2026"
+    Run GPU work in a **Slurm allocation using an Enroot/Pyxis container**.
+    Ordinary SSH sessions on the manager cannot access the GPU. Read
+    [what changed for users](cluster-updates.md), including shared homes,
+    login-session limits and [job history](job-history.md).
+
 ## Choose your next step
 
 <div class="journey-grid">
@@ -52,7 +58,7 @@
     <p class="eyebrow">KEEP PROJECTS ORGANISED</p>
     <h2>Start personal work in your home directory.</h2>
   </div>
-  <p>Use <code>$HOME</code> for code, logs, and personal caches. The areas under <code>/home/data</code> are managed shared storage: request a project directory or dataset access when you need it.</p>
+  <p>Your personal <code>$HOME</code> is shared across all three nodes. Use it for project files, logs, and results; leave Enroot's working caches at their system defaults. Ask Josh about managed storage under <code>/home/data</code> and which nodes can access a project directory.</p>
 </div>
 
 ## What is on the system?

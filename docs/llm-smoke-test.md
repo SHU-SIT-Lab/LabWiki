@@ -9,6 +9,11 @@ job fails and the job log explains why.
 The model is about 0.5 billion parameters, so it is suitable for a quick
 single-GPU test rather than serious evaluation or training.
 
+Run this from your account on **`spark-c3d8.local`**. The job requests a GPU and
+launches the model inside a container, as required by the
+[current cluster workflow](cluster-updates.md). Your shared home supplies the
+same project and model-cache paths on every allocated node.
+
 !!! note
     The compute node needs access to Hugging Face the first time this is run.
     The model is then retained in your personal cache under your home
@@ -119,6 +124,10 @@ normal Pyxis container-import messages.
 #!/bin/bash
 # Ask Slurm for the resources this small test needs.
 #SBATCH --job-name=llm-smoke-test
+#SBATCH --account=hpc
+#SBATCH --partition=gpu
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
@@ -140,13 +149,16 @@ trap 'kill "$heartbeat_pid" 2>/dev/null || true' EXIT
 mkdir -p "$HOME/.cache/huggingface"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting the container."
-srun --container-image=docker://nvcr.io/nvidia/pytorch:25.06-py3 \
+srun --mpi=none --container-image='nvcr.io#nvidia/pytorch:25.09-py3' \
+     --no-container-remap-root \
      --container-mounts="$SLURM_SUBMIT_DIR:/workspace,$HOME/.cache/huggingface:/hf-cache" \
      --container-workdir=/workspace \
      bash -lc '
        set -euo pipefail
        echo "Installing Python dependencies."
-       python -m pip install --disable-pip-version-check --target /workspace/.packages -r requirements.txt
+       # Keep these pinned additions separate from the base packages.
+       # The NGC image sets a pip constraint file for its base environment.
+       PIP_CONSTRAINT= python -m pip install --disable-pip-version-check --target /workspace/.packages -r requirements.txt
        echo "Dependencies are ready. Loading and testing the model."
        PYTHONPATH=/workspace/.packages HF_HOME=/hf-cache python -u test_llm.py
      '
