@@ -50,8 +50,10 @@ copyright: SHU SIT Lab - Research Computing
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Cluster Changes for Users: cluster-updates.md
   - LLM Smoke Test: llm-smoke-test.md
   - Submitting Slurm Jobs: slurm-jobs.md
+  - Job History: job-history.md
   - Containers (Enroot & Pyxis): containers.md
   - FAQ & Troubleshooting: faq.md
   - Contributing to These Docs: contributing.md
