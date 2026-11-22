@@ -1,5 +1,5 @@
 site_name: LabWiki
-site_description: Documentation for the SHU SIT Lab DGX Spark / Slurm cluster
+site_description: Documentation for SHU SIT Lab research computing and robots
 site_url: https://SHU-SIT-Lab.github.io/LabWiki/
 repo_url: https://github.com/SHU-SIT-Lab/LabWiki
 repo_name: SHU-SIT-Lab/LabWiki
@@ -49,6 +49,10 @@ copyright: SHU SIT Lab - Research Computing
 
 nav:
   - Home: index.md
+  - Robots:
+      - Overview & Safety: robots/index.md
+      - Care-O-bot 4: robots/care-o-bot-4.md
+      - Unitree Go2 EDU: robots/go2-edu.md
   - Getting Started: getting-started.md
   - Cluster Changes for Users: cluster-updates.md
   - LLM Smoke Test: llm-smoke-test.md

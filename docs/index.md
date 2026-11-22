@@ -1,8 +1,8 @@
 <div class="landing-hero">
   <div class="landing-hero__content">
     <p class="eyebrow">SHU SIT LAB &middot; RESEARCH COMPUTING</p>
-    <h1>Move from idea to GPU job.</h1>
-    <p class="landing-lede">A practical guide to using the lab's DGX Spark system: schedule GPU work with Slurm and run reproducible environments with Enroot and Pyxis.</p>
+    <h1>Move from idea to a running system.</h1>
+    <p class="landing-lede">Practical guides for the lab's DGX Spark compute system and physical research robots.</p>
     <p class="hero-actions">
       <a class="md-button md-button--primary" href="getting-started/">Run your first job</a>
       <a class="md-button" href="llm-smoke-test/">Try the LLM example</a>
@@ -51,6 +51,12 @@
     <span class="journey-card__body">Use a containerised environment for reproducible Python, CUDA, and ML workloads.</span>
     <span class="journey-card__link">Work with containers &rarr;</span>
   </a>
+  <a class="journey-card" href="robots/">
+    <span class="journey-card__number">04</span>
+    <span class="journey-card__title">Work with lab robots</span>
+    <span class="journey-card__body">Follow safety, startup, shutdown, and software checks for Care-O-bot 4 and Go2 EDU.</span>
+    <span class="journey-card__link">Open robot runbooks &rarr;</span>
+  </a>
 </div>
 
 <div class="storage-callout">
@@ -74,3 +80,10 @@
 If a job fails or you need an account, contact **Josh Bamforth** at
 [josh.bamforth@shu.ac.uk](mailto:josh.bamforth@shu.ac.uk). The
 [FAQ & Troubleshooting](faq.md) page covers common job and container issues.
+
+## Working with lab robots
+
+The [Robots](robots/index.md) section contains safety guidance and platform
+runbooks for [Care-O-bot 4](robots/care-o-bot-4.md) and
+[Unitree Go2 EDU](robots/go2-edu.md). Start there before powering on or
+connecting software to a physical robot.

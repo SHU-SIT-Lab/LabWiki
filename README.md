@@ -1,7 +1,9 @@
 # LabWiki
 
-Source for the SHU SIT Lab's cluster documentation site (DGX Spark / Slurm /
-Enroot / Pyxis), built with
+[Open the LabWiki website](https://shu-sit-lab.github.io/LabWiki/)
+
+Source for the SHU SIT Lab's research computing documentation (DGX Spark /
+Slurm / Enroot / Pyxis) and robot guides (Care-O-bot 4 and Unitree Go2 EDU), built with
 [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) and
 published via GitHub Pages.
 

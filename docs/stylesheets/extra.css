@@ -204,7 +204,7 @@
 
 .journey-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   gap: 1rem;
   margin: 1.3rem 0 2.75rem;
 }
