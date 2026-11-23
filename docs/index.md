@@ -1,8 +1,15 @@
+---
+title: SHU SIT Lab documentation
+hide:
+  - navigation
+  - toc
+---
+
 <div class="landing-hero">
   <div class="landing-hero__content">
-    <p class="eyebrow">SHU SIT LAB &middot; RESEARCH COMPUTING</p>
-    <h1>Move from idea to a running system.</h1>
-    <p class="landing-lede">Practical guides for the lab's DGX Spark compute system and physical research robots.</p>
+    <p class="eyebrow">RESEARCH COMPUTING AND ROBOTICS</p>
+    <h1>SHU SIT Lab documentation</h1>
+    <p class="landing-lede">Guides for the DGX Spark compute system, Care-O-bot 4, and Unitree Go2 EDU.</p>
     <p class="hero-actions">
       <a class="md-button md-button--primary" href="getting-started/">Run your first job</a>
       <a class="md-button" href="llm-smoke-test/">Try the LLM example</a>
@@ -30,7 +37,7 @@
     [what changed for users](cluster-updates.md), including shared homes,
     login-session limits and [job history](job-history.md).
 
-## Choose your next step
+## Documentation guides
 
 <div class="journey-grid">
   <a class="journey-card" href="getting-started/">

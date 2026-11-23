@@ -89,11 +89,11 @@
 .landing-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(13rem, 0.7fr);
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1.75rem;
   overflow: hidden;
   margin: 0.25rem 0 2.4rem;
-  padding: clamp(2rem, 5vw, 4.25rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
   border-radius: 0.65rem;
   color: #f7f9fc;
   background:
@@ -117,6 +117,7 @@
 .landing-hero__content,
 .hero-facts {
   position: relative;
+  min-width: 0;
   z-index: 1;
 }
 
@@ -134,11 +135,11 @@
 }
 
 .landing-hero h1 {
-  max-width: 8.3em;
   margin: 0;
   color: #ffffff;
-  font-size: clamp(2.2rem, 5vw, 3.55rem);
-  line-height: 1.04;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.15;
 }
 
 .landing-lede {
@@ -195,7 +196,7 @@
   text-transform: uppercase;
 }
 
-.hero-facts dd {
+.md-typeset .hero-facts dd {
   margin: 0.15rem 0 0;
   color: #ffffff;
   font-size: 1rem;
@@ -204,7 +205,7 @@
 
 .journey-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
   gap: 1rem;
   margin: 1.3rem 0 2.75rem;
 }
@@ -273,7 +274,7 @@
 
 .storage-callout {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
   gap: 2.3rem;
   align-items: center;
   margin: 0 0 2.75rem;
@@ -317,16 +318,6 @@
   color: #c7d2e3;
 }
 
-@media screen and (max-width: 76.1875em) {
-  .journey-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .journey-card {
-    min-height: 0;
-  }
-}
-
 @media screen and (max-width: 44.9375em) {
   .landing-hero,
   .storage-callout {
@@ -335,11 +326,15 @@
   }
 
   .landing-hero {
-    padding: 2rem 1.4rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .journey-card {
+    min-height: 0;
   }
 
   .hero-facts {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
     gap: 0.45rem;
   }
 
