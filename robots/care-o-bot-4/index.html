@@ -1,0 +1,1591 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for SHU SIT Lab research computing and robots">
+      
+      
+      
+        <link rel="canonical" href="https://SHU-SIT-Lab.github.io/LabWiki/robots/care-o-bot-4/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../go2-edu/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+      
+        <title>Care-O-bot 4 - LabWiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#care-o-bot-4" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="LabWiki" class="md-header__button md-logo" aria-label="LabWiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1M9 5h1V3H9zm0 8h1v-2H9zm0 8h1v-2H9zM5 3v2h2V3zm0 8v2h2v-2zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LabWiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Care-O-bot 4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SHU-SIT-Lab/LabWiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SHU-SIT-Lab/LabWiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Robots
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../getting-started/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cluster-updates/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cluster Changes for Users
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../llm-smoke-test/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Smoke Test
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../slurm-jobs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Submitting Slurm Jobs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../job-history/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Job History
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../containers/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Containers (Enroot & Pyxis)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ & Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contributing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contributing to These Docs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LabWiki" class="md-nav__button md-logo" aria-label="LabWiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1M9 5h1V3H9zm0 8h1v-2H9zm0 8h1v-2H9zM5 3v2h2V3zm0 8v2h2v-2zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    LabWiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SHU-SIT-Lab/LabWiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SHU-SIT-Lab/LabWiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robots
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Robots
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview & Safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Care-O-bot 4
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Care-O-bot 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-first-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before first use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-your-laptop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect your laptop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#startup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Startup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Startup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepare-the-robot-and-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prepare the robot and area
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-power-on-and-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Power on and wait
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-start-the-verified-lab-bringup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Start the verified lab bringup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-check-before-requesting-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Check before requesting movement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shutdown
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-and-visualisation-safe-first-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status and visualisation - safe first checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm-and-gripper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arm and gripper
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recovery-after-an-emergency-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovery after an emergency stop
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../go2-edu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unitree Go2 EDU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster-updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cluster Changes for Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-smoke-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Smoke Test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Submitting Slurm Jobs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../job-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Job History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../containers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Containers (Enroot & Pyxis)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ & Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing to These Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-first-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before first use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-your-laptop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect your laptop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#startup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Startup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Startup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepare-the-robot-and-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prepare the robot and area
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-power-on-and-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Power on and wait
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-start-the-verified-lab-bringup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Start the verified lab bringup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-check-before-requesting-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Check before requesting movement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shutdown
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-and-visualisation-safe-first-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status and visualisation - safe first checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm-and-gripper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arm and gripper
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recovery-after-an-emergency-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovery after an emergency stop
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/SHU-SIT-Lab/LabWiki/edit/main/docs/robots/care-o-bot-4.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="care-o-bot-4">Care-O-bot 4<a class="headerlink" href="#care-o-bot-4" title="Permanent link">&para;</a></h1>
+<p>Care-O-bot 4 is a mobile manipulation platform. It combines a mobile base,
+torso, arm, gripper, and perception hardware, so startup is more than simply
+turning on a computer. Treat its first motion after startup as a supervised
+test.</p>
+<h2 id="before-first-use">Before first use<a class="headerlink" href="#before-first-use" title="Permanent link">&para;</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Do not guess the robot configuration</p>
+<p>Care-O-bot installations differ in their computer names, ROS version,
+robot profile, map, calibration, and launch packages. The hardware and
+software values below have been checked on the lab robot. Do not substitute
+another Care-O-bot profile or an example map from the internet.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Lab value to record</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Robot name / asset ID</td>
+<td><code>cob4-24</code></td>
+</tr>
+<tr>
+<td>Robot computer hostname</td>
+<td><code>b1</code> (use the local SSH alias <code>cob24</code>)</td>
+</tr>
+<tr>
+<td>Recommended laptop connection</td>
+<td>Care-O-bot's built-in Wi-Fi; SSID <code>TBC</code></td>
+</tr>
+<tr>
+<td>Alternative laptop connection</td>
+<td><code>Robotics-2.4Ghz</code> or <code>Robotics-5Ghz</code></td>
+</tr>
+<tr>
+<td><code>b1</code> static IP on built-in Wi-Fi</td>
+<td><code>TBC</code></td>
+</tr>
+<tr>
+<td>ROS distribution</td>
+<td>ROS Kinetic</td>
+</tr>
+<tr>
+<td>Care-O-bot workspace</td>
+<td><code>~/josh_ws</code></td>
+</tr>
+<tr>
+<td><code>ROBOT</code> profile</td>
+<td><code>cob4-24</code></td>
+</tr>
+<tr>
+<td><code>ROBOT_ENV</code> profile</td>
+<td>Not used; <code>4114c</code> is a map, not an environment profile</td>
+</tr>
+<tr>
+<td>Dashboard launch command</td>
+<td><code>roslaunch cob_bringup dashboard.launch</code></td>
+</tr>
+<tr>
+<td>4114c map</td>
+<td><code>~/4114c/map.yaml</code></td>
+</tr>
+<tr>
+<td>Navigation launch command</td>
+<td><code>roslaunch cob_navigation_global 2dnav_ros_dwa.launch robot:=$ROBOT map:=$COB24_MAP</code></td>
+</tr>
+<tr>
+<td>Emergency-stop controls and recovery owner</td>
+<td><code>TBC</code></td>
+</tr>
+</tbody>
+</table>
+<p>The upstream Care-O-bot stack uses <code>ROBOT</code> to select the hardware profile and
+can use <code>ROBOT_ENV</code> to select a navigation environment. The lab's <code>4114c</code>
+directory contains only a map, so navigation receives its path explicitly
+through <code>map:=$COB24_MAP</code>. The standard real-robot bringup entry point is
+<code>cob_bringup robot.launch</code>. <a href="https://ros.fei.edu.br/roswiki/cob.html">Care-O-bot software overview</a></p>
+<h2 id="connect-your-laptop">Connect your laptop<a class="headerlink" href="#connect-your-laptop" title="Permanent link">&para;</a></h2>
+<p>Care-O-bot is connected to <a href="../#robotics-wi-fi">Robotics Wi-Fi</a> and can
+be accessed from <code>Robotics-2.4Ghz</code> or <code>Robotics-5Ghz</code>. For day-to-day work,
+connect your laptop to <strong>Care-O-bot's built-in Wi-Fi</strong>: all the robot's
+computers have static IP addresses on that network, making them easier to
+access.</p>
+<p>Ask the robot owner for the built-in Wi-Fi name, credentials, and static IP
+addresses. The SSID and <code>b1</code> address still need to be recorded in the table
+above. Configure your laptop's <code>cob24</code> SSH alias with the address of <code>b1</code> on
+the network you are using; an address for one network may differ from the
+address used on the other.</p>
+<h2 id="startup">Startup<a class="headerlink" href="#startup" title="Permanent link">&para;</a></h2>
+<h3 id="1-prepare-the-robot-and-area">1. Prepare the robot and area<a class="headerlink" href="#1-prepare-the-robot-and-area" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Confirm that the robot and its control device are charged.</li>
+<li>Disconnect the charger and make sure all covers and modules are secure.</li>
+<li>Clear the test area, including the arm sweep and the mobile-base path.</li>
+<li>Identify the physical emergency-stop controls and make sure the wireless
+   stop device is available and charged, if fitted.</li>
+<li>Check that the brake release is not engaged. Do not release an emergency
+   stop merely to make a fault disappear.</li>
+</ol>
+<h3 id="2-power-on-and-wait">2. Power on and wait<a class="headerlink" href="#2-power-on-and-wait" title="Permanent link">&para;</a></h3>
+<p>Use the labelled power control on the lab's Care-O-bot and wait for every
+computer and hardware module to finish booting. A Care-O-bot installation can
+take several minutes to start. Do not send ROS motion commands while the robot
+is booting.</p>
+<h3 id="3-start-the-verified-lab-bringup">3. Start the verified lab bringup<a class="headerlink" href="#3-start-the-verified-lab-bringup" title="Permanent link">&para;</a></h3>
+<p>Follow the <a href="#connect-your-laptop">laptop connection instructions</a>, preferably
+using Care-O-bot's built-in Wi-Fi, then connect to <code>b1</code> using SSH. If you have
+configured the <code>cob24</code> alias on your laptop, run:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>cob24
+</code></pre></div>
+<p>The remaining commands below run on the robot's computer, not on your laptop.</p>
+<p>New interactive sessions in the configured robot account load the lab
+environment automatically. To load it in an existing terminal, run:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/setup/cob24_env.sh"</span>
+</code></pre></div>
+<p>This <a href="../assets/cob24_env.sh">environment script</a> only configures the terminal;
+it does not start ROS nodes or move the robot. Check it loaded correctly:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$ROBOT</span><span class="s2">"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$COB24_MAP</span><span class="s2">"</span>
+</code></pre></div>
+<p>Expected output is <code>cob4-24</code> and <code>/u/josh/4114c/map.yaml</code>.</p>
+<p>Start hardware bringup only when the robot is physically ready:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Starts hardware drivers and the base Care-O-bot stack.</span>
+roslaunch<span class="w"> </span>cob_bringup<span class="w"> </span>robot.launch
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>roslaunch cob_bringup robot.launch</code> can initialise live hardware. Run it
+only with a clear area, the correct profile, and a trained operator
+present. Do not use an example profile from the internet.</p>
+</div>
+<p>If the lab starts bringup inside <code>screen</code> or <code>tmux</code>, leave that session
+running. This keeps the hardware drivers alive if the SSH connection closes.</p>
+<h3 id="4-check-before-requesting-movement">4. Check before requesting movement<a class="headerlink" href="#4-check-before-requesting-movement" title="Permanent link">&para;</a></h3>
+<p>Run read-only checks first:</p>
+<div class="highlight"><pre><span></span><code>rosnode<span class="w"> </span>list
+rostopic<span class="w"> </span>list
+rosrun<span class="w"> </span>rqt_robot_monitor<span class="w"> </span>rqt_robot_monitor
+</code></pre></div>
+<p>Then open the lab dashboard and RViz:</p>
+<div class="highlight"><pre><span></span><code>roslaunch<span class="w"> </span>cob_bringup<span class="w"> </span>dashboard.launch
+roslaunch<span class="w"> </span>cob_bringup<span class="w"> </span>rviz.launch
+</code></pre></div>
+<p>Check that the displayed posture, sensor data, and robot position agree with
+the real robot. If navigation is enabled, set the initial pose only after you
+have confirmed the correct map.</p>
+<h2 id="shutdown">Shutdown<a class="headerlink" href="#shutdown" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Cancel navigation goals, teleoperation, arm actions, and any autonomous
+   behaviour.</li>
+<li>Return the robot to the agreed safe parking/base posture. Keep clear while
+   the arm and torso move.</li>
+<li>Stop launch files cleanly with <code>Ctrl+C</code>, then close related terminals or
+   detach from the managed <code>screen</code>/<code>tmux</code> session as instructed by the robot
+   owner.</li>
+<li>Apply the robot's emergency-stop controls before power-off, if this is the
+   established lab procedure.</li>
+<li>Use the labelled Care-O-bot power control and wait for the robot computers
+   to shut down before leaving it or connecting a charger.</li>
+</ol>
+<p>Do not cut power while the robot is moving or while its computers are writing
+data. The platform's Care-O-bot manual is the authority for the physical
+controls on this specific robot revision. <a href="https://mirrors.nju.edu.cn/ros-wiki/Robots%282f%29cob4%282f%29manual.html">Care-O-bot 4 user manual</a></p>
+<h2 id="common-modules">Common modules<a class="headerlink" href="#common-modules" title="Permanent link">&para;</a></h2>
+<h3 id="status-and-visualisation-safe-first-checks">Status and visualisation - safe first checks<a class="headerlink" href="#status-and-visualisation-safe-first-checks" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Purpose</th>
+<th>Safe first action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Robot monitor</td>
+<td>Shows driver and hardware diagnostics</td>
+<td>Open <code>rqt_robot_monitor</code> and resolve errors before motion</td>
+</tr>
+<tr>
+<td>RViz</td>
+<td>Shows transforms, sensor data, map, and planned paths</td>
+<td>Verify the robot model and map position match reality</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>Sends approved initialise, posture, and task controls</td>
+<td>Use only after the robot owner has shown the lab dashboard workflow</td>
+</tr>
+</tbody>
+</table>
+<h3 id="navigation">Navigation<a class="headerlink" href="#navigation" title="Permanent link">&para;</a></h3>
+<p>Navigation requires the correct map, localisation, and a clear route. Start it
+only after basic bringup is healthy and RViz shows a plausible robot pose. For
+the lab's 4114c map, use:</p>
+<div class="highlight"><pre><span></span><code>roslaunch<span class="w"> </span>cob_navigation_global<span class="w"> </span>2dnav_ros_dwa.launch<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>robot:<span class="o">=</span><span class="s2">"</span><span class="nv">$ROBOT</span><span class="s2">"</span><span class="w"> </span>map:<span class="o">=</span><span class="s2">"</span><span class="nv">$COB24_MAP</span><span class="s2">"</span>
+</code></pre></div>
+<p>The standard Care-O-bot stack also provides separate SLAM modules. Do not run
+SLAM against an existing map unless that is the experiment's purpose.</p>
+<p>Before sending a goal:</p>
+<ol>
+<li>Confirm the planned route has no people or obstacles.</li>
+<li>Keep the emergency-stop control within reach.</li>
+<li>Use a nearby observer for the first goal of a session.</li>
+<li>Send a short, slow goal in an open area.</li>
+</ol>
+<h3 id="arm-and-gripper">Arm and gripper<a class="headerlink" href="#arm-and-gripper" title="Permanent link">&para;</a></h3>
+<p>The arm can sweep into areas that the base does not occupy. Start with the
+robot's approved base posture, make sure its work surface is clear, and test
+one low-speed motion at a time. Do not alter calibration files or run an
+unfamiliar MoveIt/manipulation demo on the physical robot.</p>
+<h2 id="recovery-after-an-emergency-stop">Recovery after an emergency stop<a class="headerlink" href="#recovery-after-an-emergency-stop" title="Permanent link">&para;</a></h2>
+<p>Do not treat recovery as a button sequence. First remove the cause, cancel
+any outstanding navigation or arm commands, and check whether an old goal
+could re-run when power is restored. Then ask the trained robot owner to use
+the lab's documented recovery procedure. Care-O-bot installations can retain
+navigation goals across a stop, so blindly releasing a stop may cause renewed
+motion.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview &amp; Safety">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview & Safety
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../go2-edu/" class="md-footer__link md-footer__link--next" aria-label="Next: Unitree Go2 EDU">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Unitree Go2 EDU
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      SHU SIT Lab - Research Computing
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "content.action.edit", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
